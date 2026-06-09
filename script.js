@@ -211,7 +211,7 @@ function verify() {
   } else {
     err.classList.remove('hide');
     form.classList.add('shake');
-    document.getElementById('pin').value = '';
+    document.querySelectorAll('.pb').forEach(b => { b.value = ''; b.classList.remove('filled'); });
     setTimeout(() => {
       form.classList.remove('shake');
       err.classList.add('hide');
@@ -507,15 +507,15 @@ function initAudio() {
 
   let actx = null, nodes = [], playing = false;
 
-  function buildAmbient(ctx) {
+  function buildAmbient(audioCtx) {
     /* A major pad — warm and soft */
     const freqs = [110, 138.59, 164.81, 220, 246.94];
     freqs.forEach((freq, idx) => {
-      const osc    = ctx.createOscillator();
-      const gain   = ctx.createGain();
-      const filter = ctx.createBiquadFilter();
-      const lfo    = ctx.createOscillator();
-      const lfoG   = ctx.createGain();
+      const osc    = audioCtx.createOscillator();
+      const gain   = audioCtx.createGain();
+      const filter = audioCtx.createBiquadFilter();
+      const lfo    = audioCtx.createOscillator();
+      const lfoG   = audioCtx.createGain();
 
       osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
       osc.frequency.value = freq;
@@ -531,7 +531,7 @@ function initAudio() {
       lfoG.connect(gain.gain);
       osc.connect(filter);
       filter.connect(gain);
-      gain.connect(ctx.destination);
+      gain.connect(audioCtx.destination);
 
       osc.start(); lfo.start();
       nodes.push(osc, lfo);
