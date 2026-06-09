@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Official Popsi Museum™</title>
+    <meta name="description" content="A tribute to Odetayo Olubukola — The Official Popsi Museum™. Celebrating 52 years.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%23C9A84C'/><text y='.9em' x='50%' text-anchor='middle' font-size='55' font-family='serif' fill='%230A0A0A'>52</text></svg>">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#C9A84C">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Popsi Museum">
+    <meta property="og:title" content="The Official Popsi Museum™">
+    <meta property="og:description" content="52 Years of Laughter, Wisdom, and Occasional Nagging. A tribute to Odetayo Olubukola.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://YOUR_USERNAME.github.io/popsi-museum/icon.svg">
+    <meta property="og:url" content="https://YOUR_USERNAME.github.io/popsi-museum/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Official Popsi Museum™">
+    <meta name="twitter:description" content="52 Years of Laughter, Wisdom, and Occasional Nagging.">
+    <meta name="twitter:image" content="https://YOUR_USERNAME.github.io/popsi-museum/icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div id="intro">
+      <div class="intro-inner">
+        <div class="intro-line-top"></div>
+        <p class="intro-museum" id="intro-txt"></p>
+        <div class="intro-line-bot"></div>
+      </div>
+    </div>
+    <canvas id="bgc"></canvas>
+
+    <div id="wrap">
+      <div id="progress"></div>
+      <button id="audio-btn" aria-label="Toggle ambient sound" title="Toggle ambient sound">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <polygon points="11,5 6,9 2,9 2,15 6,15 11,19"/>
+          <path id="audio-waves" d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14"/>
+        </svg>
+      </button>
+
+      <div id="gate">
+        <div class="g-scan"></div>
+        <div class="g-door g-door-l"></div>
+        <div class="g-door g-door-r"></div>
+        <div id="gc">
+          <div id="gf">
+            <span class="g-eye">Restricted Archive &mdash; Authorised Access Only</span>
+            <p class="g-logo">The Official<br />Popsi Museum&#8482;</p>
+            <div class="g-rule"></div>
+            <p class="g-sub">Enter Clearance Code To Proceed</p>
+            <span class="g-lbl">Clearance Code</span>
+            <div class="pin-row" id="pin-row">
+              <input class="pb" type="tel" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off">
+              <input class="pb" type="tel" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off">
+              <input class="pb" type="tel" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off">
+              <input class="pb" type="tel" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off">
+              <input class="pb" type="tel" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off">
+              <input class="pb" type="tel" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off">
+              <input class="pb" type="tel" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off">
+              <input class="pb" type="tel" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="off">
+            </div>
+            <button class="g-btn" id="gbtn">Verify Access</button>
+            <p class="g-err hide" id="gerr">Incorrect Code &mdash; Access Denied</p>
+          </div>
+          <div id="gok">
+            <span class="ok-lbl">&#x2713;&nbsp; Access Granted</span>
+            <p class="ok-name">Welcome, Popsi.</p>
+          </div>
+        </div>
+      </div>
+
+      <nav id="snav">
+        <a class="snd" data-t="hero" data-lbl="Entrance"></a>
+        <a class="snd" data-t="numbers" data-lbl="Numbers"></a>
+        <a class="snd" data-t="quotes" data-lbl="Quotes"></a>
+        <a class="snd" data-t="exhibits" data-lbl="Exhibits"></a>
+        <a class="snd" data-t="tl" data-lbl="Timeline"></a>
+        <a class="snd" data-t="memories" data-lbl="Memories"></a>
+        <a class="snd" data-t="built" data-lbl="Legacy"></a>
+        <a class="snd" data-t="letter" data-lbl="Letter"></a>
+        <a class="snd" data-t="finale" data-lbl="Finale"></a>
+      </nav>
+
+      <div id="main" class="app-main">
+        <section id="hero">
+          <div id="hspot"></div>
+          <div class="hero-inner">
+            <span class="h-chip">Est. 1974 &middot; A Life Well Lived</span>
+            <span class="h-pre">The Official</span>
+            <span class="h-big">POPSI</span>
+            <span class="h-post">Museum&#8482;</span>
+            <p class="h-full">Odetayo Olubukola</p>
+            <p class="h-est">1974 &mdash; Present</p>
+            <div class="h-roles"><span id="rtxt"></span></div>
+            <div class="h-age">
+              <span class="h-age-l">Celebrating</span>
+              <span class="h-age-n">52</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="sec gl rv" id="numbers">
+          <span class="stag">Archive Record &mdash; Statistical Overview</span>
+          <h2 class="stit">The Legend In Numbers</h2>
+          <div class="srule"></div>
+          <div class="sg">
+            <div class="stat rvc"><span class="sv counter" data-t="52">0</span><span class="sl">Years<br />On Earth</span></div>
+            <div class="stat rvc"><span class="sv counter" data-t="17">0</span><span class="sl">Years As<br />A Father</span></div>
+            <div class="stat rvc"><span class="sv counter" data-t="3">0</span><span class="sl">Children<br />Raised</span></div>
+            <div class="stat rvc"><span class="sv">&infin;</span><span class="sl">Problems<br />Solved</span></div>
+            <div class="stat rvc"><span class="sv">Always</span><span class="sl">Times He<br />Answered The Call</span></div>
+            <div class="stat rvc"><span class="sv sv--compact">Still<br />Counting</span><span class="sl">Lessons<br />Given</span></div>
+          </div>
+        </div>
+
+        <div class="sec gl rv" id="quotes">
+          <span class="stag">Museum Collection &mdash; Hall of Famous Quotes</span>
+          <h2 class="stit">Things Popsi Says</h2>
+          <div class="srule"></div>
+          <div class="qg">
+            <div class="qc rph rvc"><span class="qn">Quote &mdash; 001</span><span class="qm">&ldquo;</span><p class="qt">[QUOTE_1]</p></div>
+            <div class="qc rph rvc"><span class="qn">Quote &mdash; 002</span><span class="qm">&ldquo;</span><p class="qt">[QUOTE_2]</p></div>
+            <div class="qc rph rvc"><span class="qn">Quote &mdash; 003</span><span class="qm">&ldquo;</span><p class="qt">[QUOTE_3]</p></div>
+            <div class="qc rph rvc"><span class="qn">Quote &mdash; 004</span><span class="qm">&ldquo;</span><p class="qt">[QUOTE_4]</p></div>
+            <div class="qc rph rvc"><span class="qn">Quote &mdash; 005</span><span class="qm">&ldquo;</span><p class="qt">[QUOTE_5]</p></div>
+            <div class="qc rph rvc"><span class="qn">Quote &mdash; 006</span><span class="qm">&ldquo;</span><p class="qt">[QUOTE_6]</p></div>
+          </div>
+        </div>
+
+        <div class="sec gl rv" id="exhibits">
+          <span class="stag">Permanent Collection &mdash; Personality Exhibits</span>
+          <h2 class="stit">Popsi Lore</h2>
+          <div class="srule"></div>
+          <div class="exl">
+            <div class="ex rvc"><span class="exn">Exhibit<br />001</span><div><p class="ext">The Laugh</p><p class="exd">[EXHIBIT_1_DESC]</p><span class="extg">Status: Fully Operational</span></div></div>
+            <div class="ex rvc"><span class="exn">Exhibit<br />002</span><div><p class="ext">The Nagging Protocol</p><p class="exd">[EXHIBIT_2_DESC]</p><span class="extg">Running Since: 1974</span></div></div>
+            <div class="ex rvc"><span class="exn">Exhibit<br />003</span><div><p class="ext">Dad Telepathy</p><p class="exd">[EXHIBIT_3_DESC]</p><span class="extg">Classification: Overpowered</span></div></div>
+            <div class="ex rvc"><span class="exn">Exhibit<br />004</span><div><p class="ext">[EXHIBIT_4_TITLE]</p><p class="exd">[EXHIBIT_4_DESC]</p><span class="extg">[EXHIBIT_4_TAG]</span></div></div>
+            <div class="ex rvc"><span class="exn">Exhibit<br />005</span><div><p class="ext">[EXHIBIT_5_TITLE]</p><p class="exd">[EXHIBIT_5_DESC]</p><span class="extg">[EXHIBIT_5_TAG]</span></div></div>
+          </div>
+        </div>
+
+        <div class="sec gl rv" id="tl">
+          <span class="stag">Historical Archive &mdash; A Life Documented</span>
+          <h2 class="stit">Timeline of a Legend</h2>
+          <div class="srule"></div>
+          <div class="tl" id="tlb">
+            <div class="tlt" id="tlt"></div>
+            <div class="tli rvc"><div class="tld"></div><span class="tly">1974</span><p class="tle">A Legend Arrives</p><p class="tln">Odetayo Olubukola enters the world. Things would never be quite the same.</p></div>
+            <div class="tli rvc"><div class="tld"></div><span class="tly">[YEAR]</span><p class="tle">He Chose His Family</p><p class="tln">[TIMELINE_2_NOTE]</p></div>
+            <div class="tli rvc"><div class="tld"></div><span class="tly">[YEAR]</span><p class="tle">Became Popsi</p><p class="tln">[TIMELINE_3_NOTE]</p></div>
+            <div class="tli rvc"><div class="tld"></div><span class="tly">[YEAR]</span><p class="tle">[TIMELINE_4_EVENT]</p><p class="tln">[TIMELINE_4_NOTE]</p></div>
+            <div class="tli rvc"><div class="tld"></div><span class="tly">2026</span><p class="tle">52 Years Strong</p><p class="tln">Still laughing. Still calling at the exact wrong moment. Still being right.</p></div>
+          </div>
+        </div>
+
+        <div class="sec gl rv" id="memories">
+          <span class="stag">Private Collection &mdash; Memory Vault</span>
+          <h2 class="stit">Moments We Remember</h2>
+          <div class="srule"></div>
+          <div class="mg">
+            <div class="mc rph rvc"><span class="mi">Memory &mdash; 001</span><p class="mt">[MEMORY_1]</p></div>
+            <div class="mc rph rvc"><span class="mi">Memory &mdash; 002</span><p class="mt">[MEMORY_2]</p></div>
+            <div class="mc rph rvc"><span class="mi">Memory &mdash; 003</span><p class="mt">[MEMORY_3]</p></div>
+            <div class="mc rph rvc"><span class="mi">Memory &mdash; 004</span><p class="mt">[MEMORY_4]</p></div>
+            <div class="mc rph rvc"><span class="mi">Memory &mdash; 005</span><p class="mt">[MEMORY_5]</p></div>
+          </div>
+        </div>
+
+        <div class="sec gl rv" id="built">
+          <span class="stag">Legacy Collection &mdash; What Endures</span>
+          <h2 class="stit">What Popsi Built</h2>
+          <div class="srule"></div>
+          <div class="bg">
+            <div class="bi rph rvc">
+              <div class="biw">
+                <svg viewBox="0 0 24 24"><path d="M3 12L12 3l9 9" /><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9" /></svg>
+              </div>
+              <p class="bt">A Home</p>
+              <p class="bd">Not just a building. A place of warmth, stability, and belonging.</p>
+            </div>
+            <div class="bi rph rvc">
+              <div class="biw">
+                <svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3" /><path d="M3 21v-2a4 4 0 014-4h4a4 4 0 014 4v2" /><circle cx="18" cy="8" r="2.5" /><path d="M21 21v-1.5a3 3 0 00-2.5-2.97" /></svg>
+              </div>
+              <p class="bt">A Family</p>
+              <p class="bd">[BUILT_FAMILY]</p>
+            </div>
+            <div class="bi rph rvc">
+              <div class="biw">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="20" /><path d="M5 8l7-5 7 5" /><path d="M5 8l3.5 7H1.5L5 8z" /><path d="M19 8l3.5 7h-7L19 8z" /><line x1="7" y1="20" x2="17" y2="20" /></svg>
+              </div>
+              <p class="bt">Values</p>
+              <p class="bd">Hard work. Integrity. Resilience. The things money cannot buy.</p>
+            </div>
+            <div class="bi rph rvc">
+              <div class="biw">
+                <svg viewBox="0 0 24 24"><path d="M22 10v1a10 10 0 01-20 0v-1" /><path d="M5 10V7l7-5 7 5v3" /><line x1="12" y1="2" x2="12" y2="7" /><rect x="8" y="14" width="8" height="7" rx="1" /></svg>
+              </div>
+              <p class="bt">A Future</p>
+              <p class="bd">A son studying Electrical &amp; Information Engineering. Carrying the legacy forward.</p>
+            </div>
+            <div class="bi rph rvc">
+              <div class="biw">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 3c-3.5 4-3.5 14 0 18" /><path d="M12 3c3.5 4 3.5 14 0 18" /><line x1="3.5" y1="9" x2="20.5" y2="9" /><line x1="3.5" y1="15" x2="20.5" y2="15" /></svg>
+              </div>
+              <p class="bt">A Legacy</p>
+              <p class="bd">One that grows quietly. One that will speak for itself long after the noise fades.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec gl rv" id="letter">
+          <span class="stag">Personal Archive &mdash; A Son&rsquo;s Words</span>
+          <h2 class="stit">Letter From Josiah</h2>
+          <div class="srule"></div>
+          <div class="lw">
+            <span class="lf">Written by &mdash; Josiah Inioluwa Odetayo &middot; June 2026</span>
+            <p class="ls">Dear Popsi,</p>
+            <div class="lb">
+              <p>[LETTER_P1: Something about the relationship. Why this tribute exists. What you want him to feel.]</p>
+              <p>[LETTER_P2: The sacrifice you appreciate most. Name it specifically, not generically.]</p>
+              <p>[LETTER_P3: A quality of his you admire and are still trying to learn.]</p>
+              <p>[LETTER_P4: What you don't say often enough. Easier to write than to say out loud.]</p>
+              <p>Thank you for everything. Fifty-two years well lived. Many more ahead.</p>
+            </div>
+            <p class="lsi">With love and respect,<br />Josiah.</p>
+          </div>
+        </div>
+
+        <section id="finale" class="rv">
+          <canvas id="cc"></canvas>
+          <div class="fi">
+            <span class="fl">The Official Popsi Museum&#8482; Presents</span>
+            <span class="f52">52</span>
+            <p class="fhb">Happy Birthday</p>
+            <p class="fto">Odetayo Olubukola</p>
+            <p class="fcr">A tribute built by your son &middot; June 11, 2026</p>
+            <button id="replay-btn" aria-label="Replay celebration">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.52"/></svg>
+              Replay
+            </button>
+          </div>
+        </section>
+
+        <footer>
+          <div class="fseal">OFFICIAL<br />MUSEUM<br />&#8482;</div>
+          <p class="ftxt">The Official Popsi Museum&#8482; &middot; Est. 1974 &middot; Curated by Josiah &middot; 2026</p>
+        </footer>
+      </div>
+
+      <div id="egg" role="dialog" aria-modal="true" aria-label="Secret message">
+        <div class="egg-box">
+          <div class="egg-rule"></div>
+          <p class="egg-label">You Found It.</p>
+          <p class="egg-msg">
+            <!-- PLACEHOLDER: write a short secret message — something only you and Popsi would understand -->
+            [EASTER_EGG_MESSAGE]
+          </p>
+          <div class="egg-rule"></div>
+          <button id="egg-close" touch-action="manipulation">Close</button>
+        </div>
+      </div>
+
+      <button id="btt" onclick="scrollTo({top: 0, behavior: 'smooth'})">&#8593;</button>
+    </div>
+  </body>
+</html>
