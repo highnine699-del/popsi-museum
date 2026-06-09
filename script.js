@@ -116,9 +116,10 @@
   }, 700);
 })();
 
+const CODE = '11061974';
+
 (function initPinBoxes() {
   const boxes = [...document.querySelectorAll('.pb')];
-  const CODE  = '11061974';
   const err   = document.getElementById('gerr');
   const form  = document.getElementById('gf');
 
@@ -127,7 +128,7 @@
   function attemptVerify() {
     if (getCode().length < 8) return;
     if (getCode() === CODE) {
-      verify();
+      window._museumVerify();
     } else {
       err.classList.remove('hide');
       form.classList.add('shake');
@@ -179,6 +180,14 @@
     btn.addEventListener('click', attemptVerify);
     btn.addEventListener('touchend', e => { e.preventDefault(); attemptVerify(); });
   }
+
+  /* Handle form submission (Enter key on mobile) */
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      attemptVerify();
+    });
+  }
 })();
 
 function verify() {
@@ -209,6 +218,7 @@ function verify() {
     }, 700);
   }
 }
+window._museumVerify = verify;
 
 function initSpot() {
   const hero = document.getElementById('hero');
