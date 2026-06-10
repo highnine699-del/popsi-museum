@@ -820,7 +820,7 @@ select {
 
 .sg {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: var(--gold-faint);
     border: 1px solid var(--border);
@@ -1039,7 +1039,7 @@ select {
 
 .mg {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: var(--gold-faint);
     border: 1px solid var(--border);
@@ -1056,6 +1056,14 @@ select {
 
 .mc:active {
     background: rgba(201, 168, 76, 0.05);
+}
+
+.mc:last-child:nth-child(3n - 1) {
+    grid-column: span 2;
+}
+
+.mc:last-child:nth-child(3n - 2) {
+    grid-column: span 3;
 }
 
 .mi {
@@ -1500,6 +1508,15 @@ footer {
         grid-template-columns: 1fr;
         gap: 0.5rem;
         padding: 2rem 1.4rem;
+    }
+
+    .mg {
+        grid-template-columns: 1fr;
+    }
+
+    .mc:last-child:nth-child(3n - 1),
+    .mc:last-child:nth-child(3n - 2) {
+        grid-column: span 1;
     }
 
     .lw {
