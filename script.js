@@ -116,7 +116,7 @@
   }, 700);
 })();
 
-const CODE = '11061974';
+const CODE = '1974';
 
 (function initPinBoxes() {
   const boxes = [...document.querySelectorAll('.pb')];
@@ -126,7 +126,7 @@ const CODE = '11061974';
   function getCode() { return boxes.map(b => b.value).join(''); }
 
   function attemptVerify() {
-    if (getCode().length < 8) return;
+    if (getCode().length < 4) return;
     if (getCode() === CODE) {
       window._museumVerify();
     } else {
@@ -369,8 +369,8 @@ function initConfetti() {
 function fireworks(canvas) {
   const ctx = canvas.getContext('2d');
   function sz() {
-    canvas.width = canvas.offsetWidth || window.innerWidth;
-    canvas.height = canvas.offsetHeight || 600;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
   }
   sz();
   window.addEventListener('resize', sz, { passive: true });
@@ -505,51 +505,22 @@ function initAudio() {
   if (!btn) return;
   btn.classList.add('vis');
 
-  let actx = null, nodes = [], playing = false;
-
-  function buildAmbient(audioCtx) {
-    /* A major pad — warm and soft */
-    const freqs = [110, 138.59, 164.81, 220, 246.94];
-    freqs.forEach((freq, idx) => {
-      const osc    = audioCtx.createOscillator();
-      const gain   = audioCtx.createGain();
-      const filter = audioCtx.createBiquadFilter();
-      const lfo    = audioCtx.createOscillator();
-      const lfoG   = audioCtx.createGain();
-
-      osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
-      osc.frequency.value = freq;
-      filter.type = 'lowpass';
-      filter.frequency.value = 600;
-      filter.Q.value = 0.5;
-      gain.gain.value = 0.018;
-
-      lfo.frequency.value = 0.08 + idx * 0.03;
-      lfoG.gain.value = 0.008;
-
-      lfo.connect(lfoG);
-      lfoG.connect(gain.gain);
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(audioCtx.destination);
-
-      osc.start(); lfo.start();
-      nodes.push(osc, lfo);
-    });
-  }
+  let audio = null, playing = false;
 
   btn.addEventListener('click', () => {
-    if (!actx) {
-      actx = new (window.AudioContext || window.webkitAudioContext)();
-      buildAmbient(actx);
+    if (!audio) {
+      audio = new Audio('background_music.m4a');
+      audio.loop = true;
+      audio.volume = 0.5;
+      audio.play().catch(err => console.warn('Audio play failed:', err));
       playing = true;
       btn.classList.remove('muted');
     } else if (playing) {
-      actx.suspend();
+      audio.pause();
       playing = false;
       btn.classList.add('muted');
     } else {
-      actx.resume();
+      audio.play();
       playing = true;
       btn.classList.remove('muted');
     }

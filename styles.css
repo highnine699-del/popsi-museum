@@ -373,6 +373,7 @@ select {
     transition: border-bottom-color 0.3s, box-shadow 0.3s;
     border-radius: 0;
     -webkit-appearance: none;
+    appearance: none;
 }
 
 .pb:focus {
@@ -1224,7 +1225,7 @@ select {
 }
 
 #cc {
-    position: absolute;
+    position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 0;
